@@ -1,10 +1,10 @@
 import css from './ContactForm.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
-import { addContact } from '..//../redux/contactsSlice';
 
 import { useId } from 'react';
 import * as Yup from 'yup';
+import { addContact } from '../../redux/contactsOps';
 
 const initialValues = {
   contactName: '',
@@ -54,7 +54,11 @@ export default function ContactForm() {
             name="contactName"
             id={nameFieldId}
           />
-          <ErrorMessage className={css.error} name="contactName" as="span" />
+          <ErrorMessage
+            className={css.error}
+            name="contactName"
+            component="span"
+          />
         </div>
         <div>
           <label htmlFor={numberFieldId}>Number</label>
@@ -64,7 +68,7 @@ export default function ContactForm() {
             name="number"
             id={numberFieldId}
           />
-          <ErrorMessage className={css.error} name="number" as="span" />
+          <ErrorMessage className={css.error} name="number" component="span" />
         </div>
         <button className={css.btn} type="submit">
           Add contact
